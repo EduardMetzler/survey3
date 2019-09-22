@@ -1,0 +1,37 @@
+<form [formGroup]="singUpForm" style = "margin-top:50px;" (ngSubmit) = "ngSubmit()">
+  <mat-form-field class = "inputClass" style="width:100%;display: flex;justify-content: center;">
+    <!-- <input matInput placeholder = "Email" formControlName = "emailFormControl" [(ngModel)]="surveyService.enterUserSingUp.emailFormControl"> -->
+    <input matInput placeholder = "Email" formControlName = "emailFormControl" >
+
+  </mat-form-field>
+
+  <mat-form-field class="inputClass" style="width:100%;display: flex;justify-content: center;">
+    <!-- <input matInput placeholder="Vorname" formControlName = "firstNameFormControl" [(ngModel)]="surveyService.enterUserSingUp.firstNameFormControl"> -->
+    <input matInput placeholder="Vorname" formControlName = "firstNameFormControl" >
+
+  </mat-form-field>
+
+  <mat-form-field class="inputClass" style="width:100%;display: flex;justify-content: center;">
+    <!-- <input matInput placeholder="Name" formControlName = "nameFormControl" [(ngModel)]="surveyService.enterUserSingUp.nameFormControl"> -->
+    <input matInput placeholder="Name" formControlName = "nameFormControl" >
+
+  </mat-form-field>
+
+
+  <mat-form-field class="inputClass" style="width:100%;display: flex;justify-content: center;">
+    <!-- <input matInput placeholder="Password" formControlName = "passwordFormControl" minlength="6" [(ngModel)]="surveyService.enterUserSingUp.passwordFormControl"> -->
+    <input matInput placeholder="Password" formControlName = "passwordFormControl" minlength="6" >
+
+  </mat-form-field>
+
+
+
+
+
+  <div style = "width:100%;display: flex;justify-content: center;">
+  <button type = "submit" mat-raised-button [disabled]="!singUpForm.valid" >Registriren</button>
+
+  </div>
+
+</form>
+

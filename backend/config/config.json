@@ -1,0 +1,22 @@
+{
+    "development":{
+        "PORT":3000,
+        "MONGODB_URL":"mongodb+srv://testUser:testUser@test20-zpm8h.mongodb.net/survey3DB?retryWrites=true&w=majority",
+        "JWT_SECRET": "SECRET",
+        "JWT_EXP":"10m"
+
+  
+    },
+    "production":{
+        "PORT":80,
+        "MONGODB_URL":"mongodb+srv://testUser:testUser@test20-zpm8h.mongodb.net/survey3DB?retryWrites=true&w=majority",
+        "JWT_SECRET": "SECRET",
+        "JWT_EXP":"10m"
+    
+     
+    }
+}
+
+
+
+

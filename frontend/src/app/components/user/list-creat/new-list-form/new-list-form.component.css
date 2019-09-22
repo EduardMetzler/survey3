@@ -1,0 +1,8 @@
+.flex{
+  display: flex;
+}
+
+.red{
+  border: solid 1px red;
+
+}

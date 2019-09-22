@@ -1,0 +1,332 @@
+
+
+<!-- <app-new-list-form (allDatenEvent)="dropSetting($event)"  *ngIf="schow == 'newListForm'"></app-new-list-form> -->
+
+<!-- <app-new-list-form  *ngIf="schow == 'newListForm'"></app-new-list-form> -->
+
+
+
+
+
+<div *ngIf="!schow">
+
+    <form [formGroup]="newForm" (ngSubmit)="ngSubmit()" class="flex" >
+
+
+      <div formArrayName="allVertikal" style="width: 50%">
+          <p>col</p>
+          <button mat-raised-button (click)="addNew('vertikal')">neue col</button>
+        <div *ngFor="let vertikal of newForm.get('allVertikal').controls; let i=index">
+
+
+            <div [formGroupName]="i">
+
+                <div style="width:100%;">
+                    <mat-form-field class = ""  style="width:100%;" >
+
+
+                        <input matInput  formControlName="vertikal" (keyup)="keyOnVertikal($event,i)" placeholder="Geben Sie Eine vertikal" />
+
+
+
+                      </mat-form-field>
+
+                </div>
+            </div>
+
+        </div>
+
+
+
+      </div>
+
+
+
+
+      <div formArrayName="allHorizontal" style="width: 50%">
+        <P>row</P>
+        <button mat-raised-button (click)="addNew()">neue row</button>
+        <div *ngFor="let horizontal of newForm.get('allHorizontal').controls; let i=index">
+
+
+
+
+          <div [formGroupName]="i">
+
+            <div style="width:100%;">
+              <mat-form-field class = ""  style="width:100%;" >
+
+
+                <input matInput  formControlName="horizontal" (keyup)="keyOnHorizontal($event,i)" placeholder="Geben Sie Eine horizontal" />
+
+
+
+              </mat-form-field>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+
+
+
+    </form>
+    <button  mat-raised-button  (click)="toDrop()">drop down einrichten</button>
+  </div>
+
+
+
+
+  ////////////////////////////////////////////////////////////////
+  <!-- <div *ngIf="schow">
+    <div *ngFor="let onedropTrue of dropTrue; let i = index" >
+      <mat-accordion *ngIf="onedropTrue == 'true'" >
+        <mat-expansion-panel >
+          <mat-expansion-panel-header (click)="matTabGroup(i)">
+            <mat-panel-title >
+            {{form.allHorizontal[i].horizontal}}
+            </mat-panel-title>
+
+          </mat-expansion-panel-header>
+
+
+          <mat-tab-group  >
+            <div *ngFor="let oneVertikal of form.allVertikal; let j = index">
+
+                    <mat-tab  *ngIf="inputType[i][j] != -1"   [label]="form.allVertikal[j].vertikal" >
+                      <form [formGroup]="newDropDown" (ngSubmit)="ngSubmitDrop()">
+                        <button  type="submit">ggggggggggggggggggggggggg</button>
+                        <div formArrayName="allQustionsOfOneDropDown">
+                            <button mat-raised-button (click)="addNewOneQuestion(i,j)">neue Question</button>
+
+
+                          <div *ngFor="let oneQuestion of newDropDown.get('allQustionsOfOneDropDown').controls; let k = index;">
+                              <div  [formGroupName]="k">
+                                  <mat-form-field class = "inputClass" style="width:100%;display: flex;justify-content: center;">
+                                      <input formControlName="oneQuestion" matInput (keyup)="keyDropDown($event,i,j,k)" placeholder = "Geben Sie ein Option ein"  >
+
+
+
+                                  </mat-form-field>
+                              </div>
+                          </div>
+
+                        </div>
+
+                      </form>
+
+
+                  </mat-tab>
+
+
+
+            </div>
+
+
+
+            </mat-tab-group>
+
+
+
+        </mat-expansion-panel>
+
+      </mat-accordion>
+    </div>
+    <button  mat-raised-button  (click)="toDrop()">zurück</button>
+  </div> -->
+
+
+
+
+
+
+/
+
+
+
+
+
+
+
+  <div *ngIf="schow">
+
+        <mat-accordion  >
+            <div *ngFor="let onedropTrue of dropTrue; let i = index" >
+          <mat-expansion-panel  *ngIf="onedropTrue == 'true'">
+            <mat-expansion-panel-header (click)="matTabGroup(i)">
+              <mat-panel-title >
+              {{form.allHorizontal[i].horizontal}}
+              </mat-panel-title>
+
+            </mat-expansion-panel-header>
+
+
+            <mat-tab-group  >
+              <div *ngFor="let oneVertikal of form.allVertikal; let j = index">
+
+                      <mat-tab  *ngIf="inputType[i][j] != -1"   [label]="form.allVertikal[j].vertikal" >
+                        <form [formGroup]="newDropDown" (ngSubmit)="ngSubmitDrop()">
+                          <button  type="submit">ggggggggggggggggggggggggg</button>
+                          <div formArrayName="allQustionsOfOneDropDown">
+                              <button mat-raised-button (click)="addNewOneQuestion(i,j)">neue Question</button>
+
+
+                            <div *ngFor="let oneQuestion of newDropDown.get('allQustionsOfOneDropDown').controls; let k = index;">
+                                <div  [formGroupName]="k">
+                                    <mat-form-field class = "inputClass" style="width:100%;display: flex;justify-content: center;">
+                                        <input formControlName="oneQuestion" matInput placeholder = "Geben Sie ein Option ein"  >
+                                        <!-- <input formControlName="oneQuestion" matInput (keyup)="keyDropDown($event,i,j)" placeholder = "Geben Sie ein Option ein"  > -->
+                                        <!-- (keyup)="keyDropDown($event,i,j,k)" -->
+
+                                    </mat-form-field>
+                                </div>
+                            </div>
+
+                          </div>
+                            <!-- <mat-form-field class = "inputClass" style="width:100%;display: flex;justify-content: center;">
+                                <input matInput (keyup)="keyDropDown($event,i,j)" placeholder = "Geben Sie ein Option ein"  >
+                            </mat-form-field> -->
+                        </form>
+
+
+                    </mat-tab>
+
+
+
+              </div>
+
+
+
+              </mat-tab-group>
+
+
+
+          </mat-expansion-panel>
+
+
+
+
+
+
+
+
+
+
+
+        </div>
+
+        </mat-accordion>
+
+      <button  mat-raised-button  (click)="toDrop()">zurück</button>
+    </div>
+
+
+
+
+
+<!--
+        <mat-accordion >
+            <div *ngFor="let onedropTrue of dropTrue; let i = index">
+            <mat-expansion-panel *ngIf="onedropTrue == 'true'"><mat-expansion-panel-header (click)="matTabGroup(i)">
+                <mat-panel-title >
+                form.allHorizontal[i].horizontal
+                </mat-panel-title>
+
+              </mat-expansion-panel-header></mat-expansion-panel>
+
+    </div>
+
+          </mat-accordion> -->
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////
+
+
+<div>
+  <!-- {{allDaten.form.allHorizontal[0]}} -->
+  <!-- <p >{{form.allHorizontal[0]}}</p>
+  <p >{{form.allVertikal[0]}}</p> -->
+
+</div>
+
+<!-- *ngFor="let i of form.allHorizontal " -->
+
+<!-- style="width: 200px;height:200px;" -->
+
+<!-- rowHeight="3:2" -->
+<mat-grid-list [cols]="9" gutterSize="0px" rowHeight="3:2">
+    <mat-grid-tile class="red"  colspan="2"></mat-grid-tile>
+    <div *ngFor="let allVertikal of form.allVertikal;let j = index;">
+
+
+
+        <mat-grid-tile class="red" colspan="1" ><p style="margin: 3px;">{{form.allVertikal[j].vertikal}}</p></mat-grid-tile>
+  </div>
+
+
+</mat-grid-list>
+
+<mat-grid-list [cols]="9" gutterSize="0px" rowHeight="3:2"  *ngFor="let horizontal of form.allHorizontal; let i = index;" >
+
+    <mat-grid-tile class="red"  colspan="2"><p style="margin: 3px;">{{form.allHorizontal[i].horizontal}}</p></mat-grid-tile>
+    <div *ngFor="let vertikal of form.allVertikal;let k = index;">
+
+
+
+          <mat-grid-tile class="red" colspan="1" (click)="clickIK(i,k)">
+            <!-- <div *ngIf="inputType[i][k]==k"><p>Drop down  {{i}}{{k}}</p></div> -->
+            <div *ngIf="inputType[i][k]==k"><p>Drop down {{[i]}}{{[k]}} </p></div>
+
+            <div *ngIf="inputType[i][k]== -1"><p>Text {{[i]}}{{[k]}}</p></div>
+
+
+
+
+
+
+
+
+          </mat-grid-tile>
+
+    </div>
+
+
+  <!-- <mat-grid-tile class="red"  colspan="2"></mat-grid-tile>
+
+  <mat-grid-tile class="red"  colspan="8" rowspan="10">
+
+  </mat-grid-tile>
+
+  <mat-grid-tile class="red"  colspan="2"></mat-grid-tile> -->
+
+
+
+
+
+
+<!--
+  <mat-grid-tile class="red" colspan="2"></mat-grid-tile>
+  <mat-grid-tile class="red" colspan="3"></mat-grid-tile>
+  <mat-grid-tile class="red" colspan="4"></mat-grid-tile> -->
+
+
+
+
+
+
+</mat-grid-list>

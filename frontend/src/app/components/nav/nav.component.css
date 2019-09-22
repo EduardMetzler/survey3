@@ -1,0 +1,54 @@
+.navbar{
+  justify-content: space-between;
+}
+
+span{
+  padding-right: 1rem;
+}
+
+
+
+mat-sidenav-container{
+  height: 100%;
+}
+
+/* mat-sidenav, mat-sidenav-content{
+padding: 16px;
+} */
+
+
+mat-sidenav {
+  /* background-color: rgb(187, 158, 158); */
+  width: 200px;
+}
+
+button{
+  margin-right: 1rem;
+
+}
+
+@media (min-width: 700px){
+  .menuButton{
+    display: none
+  }
+
+}
+
+@media (max-width: 700px){
+
+  .d{
+    display: none
+  }
+}
+
+
+.logInNone{
+  display: none;
+  position: relative;
+  right: 1000px;
+
+}
+
+.logInBlock{
+  display: block
+}

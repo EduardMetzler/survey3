@@ -1,0 +1,101 @@
+<mat-sidenav-container >
+
+    <mat-sidenav  color="primary" [(opened)]="opened">
+      <mat-toolbar color="primary" >Menu</mat-toolbar>
+
+      <mat-nav-list [ngClass]="logIn ? 'logInNone' : 'logIn'">
+       <a routerLink='/singIn' mat-list-item>Anmelden</a>
+       <a routerLink='/singUp' mat-list-item>Registriren</a>
+
+
+       <!-- <a href="" mat-list-item>link1</a>
+       <a href="" mat-list-item>link2</a>
+       <a href="" mat-list-item>link3</a> -->
+
+      </mat-nav-list>
+      <mat-nav-list [ngClass]="logIn ? 'logInBlock' : 'logInNone'">
+        <a mat-list-item (click)="onLogout()">Abmelden</a>
+
+
+   </mat-nav-list>
+    </mat-sidenav>
+
+
+
+
+
+
+    <mat-sidenav-content>
+      <mat-toolbar color="primary" class="navbar">
+      <div>
+          <button  mat-icon-button (click)="opened=!opened" class="menuButton">
+              <mat-icon>menu</mat-icon>
+          </button>
+          <span routerLink='/' style="cursor: pointer;">Survey</span>
+       </div>
+
+
+       <div class="d">
+        <!-- <div  [ngClass]="logIn ? 'logInNone' : 'logIn'"> -->
+            <!-- <div  [ngClass]="authService.token ? 'logInNone' : 'logInBlock'"> -->
+                <div *ngIf="!token">
+
+
+          <!-- <span >link1</span>
+          <span >link2</span>
+          <span >link3</span> -->
+          <button routerLink='/singUp' class="button" mat-raised-button>Registriren</button>
+          <button routerLink='/singIn' class="button" mat-raised-button>Anmelden</button>
+
+
+
+
+        </div >
+        <!-- <div  [ngClass]="logIn ? 'logInBlock' : 'logInNone'" > -->
+          <!-- <div  [ngClass]="authService.token ? 'logInBlock' : 'logInNone'"> -->
+              <div *ngIf="token">
+
+          <button routerLink='' (click)="onLogout()" class="button" mat-raised-button>Abmelden</button>
+          <button routerLink='/my/userProfile'  class="button" mat-raised-button>{{userDetails.firstName}}</button>
+
+
+          </div>
+       </div>
+
+
+
+
+
+
+
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+
+    </mat-sidenav-content>
+
+  </mat-sidenav-container>
+
+
+
+
+
+
+  <!-- <mat-toolbar color="primary" class="navbar">
+      <div>
+          <button  mat-icon-button>
+              <mat-icon>menu</mat-icon>
+          </button>
+          <span>Survey</span>
+       </div>
+      <div >
+        <span >link1</span>
+        <span >link2</span>
+        <span >link3</span>
+
+      </div>
+    </mat-toolbar> -->
+
+
+
+
+    <!-- mode="side" -->

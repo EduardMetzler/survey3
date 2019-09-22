@@ -1,0 +1,65 @@
+
+
+<div *ngIf="userDetails; else load">
+  <!-- <div>{{userDetails.email.split(' ')[0]}}</div>
+  <div>{{userDetails.password.split(' ')[0]}}</div> -->
+
+  <div>{{userDetails.email}}</div>
+  <div>{{userDetails.password}}</div>
+  <div>{{userDetails._id}}</div>
+
+<button  routerLink="surveyCreat" mat-raised-button >Umfrage erstelln</button>
+
+<button color="primary" routerLink="formCreat" mat-raised-button >Form erstelln</button>
+
+<button color="primary" routerLink="listeCreat" mat-raised-button >Liste erstelln</button>
+
+
+
+
+
+  <mat-card  *ngFor="let oneMySurvey of allSurvey">
+
+    <mat-card-title (click)="selectMySurvey(oneMySurvey._id)"  *ngIf="oneMySurvey.autorId === userDetails._id">{{oneMySurvey.theme}}</mat-card-title>
+
+
+
+</mat-card >
+
+
+
+
+</div>
+
+<!-- <button (click)="onLogout()">click</button> -->
+<!-- <button  [routerLink]="['surveyCreat']" mat-raised-button >Umfrage erstelln</button> -->
+<!-- <button  routerLink="surveyCreat" mat-raised-button >Umfrage erstelln</button> -->
+
+<!-- <div  *ngIf="allSurvey$ | async as allSurvey"> -->
+  <br>
+  <br>
+
+    <!-- <mat-card  *ngFor="let oneMySurvey of allSurvey">
+
+            <mat-card-title (click)="selectMySurvey(oneMySurvey._id)"  *ngIf="oneMySurvey.autorId == userDetails._id">{{oneMySurvey.theme}}</mat-card-title>
+
+
+
+      </mat-card > -->
+<!-- </div> -->
+
+
+
+
+
+<!-- oneSurvey$ | async as oneSurvey -->
+
+<ng-template #load >
+  <div class="loadCenter">
+    <mat-spinner ></mat-spinner>
+  </div>
+</ng-template>
+
+
+
+

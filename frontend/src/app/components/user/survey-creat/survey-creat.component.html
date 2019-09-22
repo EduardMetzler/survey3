@@ -1,0 +1,193 @@
+<button mat-raised-button (click)="addNewQuestion()">Neue Frage Erstellen</button><br><br>
+<form [formGroup]="newSurveyForm" (ngSubmit) = "ngSubmit()">
+
+    <mat-form-field class = ""  style="width:100%; ">
+
+        <input placeholder="Geben Sie Thema ein" matInput formControlName="theme" />
+
+
+      </mat-form-field>
+
+  <div formArrayName="allQuestionAndAnswer">
+    <div *ngFor="let oneQuestionAndAnswer of newSurveyForm.get('allQuestionAndAnswer').controls; let i=index">
+    <!-- <fieldset> -->
+      <legend><h3>Frage Nummer {{i+1}}: </h3></legend>
+      <div [formGroupName]="i">
+        <!-- <label>Company Name: </label> -->
+        <div style="width:100%;">
+            <mat-form-field class = ""  style="width:100%;" >
+
+                <!-- <input placeholder="Geben Sie Thema ein" matInput formControlName="theme" /> -->
+                <input matInput formControlName="oneQuestion" placeholder="Geben Sie Eine Frage" />
+
+
+              </mat-form-field>
+              <button mat-raised-button (click)="deleteQuestion(i)">Die Frade Nummer : {{i+1}} löschen</button>
+        </div>
+
+
+        <div formArrayName="allAnswerOfQuestion">
+          <div *ngFor="let question of oneQuestionAndAnswer.get('allAnswerOfQuestion').controls; let j=index">
+            <!-- <fieldset> -->
+            <legend><h4>Antwort Nummer {{j+1}}</h4></legend>
+            <div [formGroupName]="j">
+
+
+                <div style="width:100%;">
+                    <mat-form-field class = ""  style="width:100%;" >
+
+                        <!-- <input placeholder="Geben Sie Thema ein" matInput formControlName="theme" /> -->
+                        <input matInput formControlName="oneAnswer" placeholder="Geben Sie Ein Antwort" />
+
+
+                      </mat-form-field>
+                      <button mat-raised-button (click)="deleteAnswer(oneQuestionAndAnswer.controls.allAnswerOfQuestion, j)">Diese Antwort löschen</button>
+                </div>
+
+
+<!--
+              <label>Project Name:</label>
+              <input formControlName="oneAnswer" /><span><button (click)="deleteAnswer(oneQuestionAndAnswer.controls.allAnswerOfQuestion, j)">Delete antwort</button></span> -->
+            </div>
+            <!-- </fieldset> -->
+          </div>
+          <button type="button" mat-raised-button  (click)="addNewAnswer(oneQuestionAndAnswer.controls.allAnswerOfQuestion)">Ein Antwort hinzufügen</button>
+        </div>
+      </div>
+    <!-- </fieldset> -->
+    </div>
+  </div><br>
+  <button   mat-raised-button type="submit" [disabled]="!autorId"  >Fertig</button>
+  <!-- <button  routerLink='/start' mat-raised-button type="submit">Fertig</button> -->
+  <!-- <input matInput formControlName="autorId" placeholder="Geben Sie Ein Antwort" /> -->
+
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <p>
+    survey-creat works!
+  </p>
+
+
+
+  <form [formGroup]="surveyCreateForm" style = "margin-top:50px;" (ngSubmit) = "ngSubmit()">
+    <mat-form-field class = "" style="width:100%;display: flex;justify-content: center;">
+      <input matInput placeholder = "Theme" formControlName = "themeFormControl" >
+    </mat-form-field>
+
+
+  <button  mat-raised-button (click)="addQuestion()">addQuestion</button>
+
+
+
+    <div formArrayName="allQuestionsOfOneSurvey" class="" style="width:100%;display: flex;justify-content: center;">
+
+
+
+      <div *ngFor="let oneSurvey of allQuestionsOfOneSurveyArray.controls; let i = index">
+
+
+        <div formGroupName="{{i}}" >
+        <p>{{i+1}}</p>
+
+
+            <mat-form-field class = "" style="width:100%;display: flex;justify-content: center;">
+                <input matInput placeholder = "Frage" formControlName = "oneQuestionFormControl" >
+            </mat-form-field>
+
+            <div  formArrayName="allAnswerOfQuestion" class="" style="width:100%;display: flex;justify-content: center;">
+
+
+                <div *ngFor="let answer of allAnswerOfQuestionArray.controls; let ii = index">
+
+
+
+                    <div formGroupName="{{ii}}" >
+                    <button type="button" mat-raised-button (click)="addAnswer(i,ii)">addAnswer</button>
+
+                        <mat-form-field class = "" style="width:100%;display: flex;justify-content: center;">
+                          <input matInput placeholder = "Answer" formControlName = "answerFormControl" >
+                        </mat-form-field>
+                    </div>
+
+                  </div>
+
+            </div>
+
+
+
+
+
+
+
+        </div>
+
+
+
+
+      </div>
+
+
+
+
+    </div>
+    <div style = "width:100%;display: flex;justify-content: center;">
+    <button type = "submit" mat-raised-button >Anmelden</button>
+
+    </div>
+
+  </form> -->
+
+
+
+
+<!-- <button (click)="addNewCompany()">Add new Company</button><br><br>
+<form [formGroup]="myForm">
+  <div formArrayName="companies">
+    <div *ngFor="let comp of myForm.get('companies').controls; let i=index">
+    <fieldset>
+      <legend><h3>COMPANY {{i+1}}: </h3></legend>
+      <div [formGroupName]="i">
+        <label>Company Name: </label>
+        <input formControlName="company" /><span><button (click)="deleteCompany(i)">Delete Company</button></span>
+        <div formArrayName="projects">
+          <div *ngFor="let project of comp.get('projects').controls; let j=index">
+            <fieldset>
+            <legend><h4>PROJECT {{j+1}}</h4></legend>
+            <div [formGroupName]="j">
+              <label>Project Name:</label>
+              <input formControlName="projectName" /><span><button (click)="deleteProject(comp.controls.projects, j)">Delete Project</button></span>
+            </div>
+            </fieldset>
+          </div>
+          <button (click)="addNewProject(comp.controls.projects)">Add new Project</button>
+        </div>
+      </div>
+    </fieldset>
+    </div>
+  </div><br>
+
+</form>
+
+<pre>{{myForm.value | json}}</pre> -->

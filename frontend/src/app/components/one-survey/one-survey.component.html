@@ -1,0 +1,51 @@
+
+
+
+
+    <div *ngIf="oneSurvey$ | async as oneSurvey; else load" >
+        <mat-card  style="margin: 10px" >
+
+            <mat-card-title>{{oneSurvey.theme}}</mat-card-title>
+
+
+
+        </mat-card>
+    </div>
+
+    <div *ngIf="oneSurvey$ | async as oneSurvey" >
+      <mat-card  style="margin: 10px" *ngFor = "let oneQuestion of oneSurvey.allQuestionsOfOneSurvey; let i = index;">
+
+          <mat-card-title>{{oneQuestion.oneQuestion}}</mat-card-title>
+          <!-- <mat-card>weewffew</mat-card> -->
+          <mat-nav-list *ngFor = "let oneAnswer of oneQuestion.allAnswerOfQuestion; let j = index;">
+
+              <a mat-list-item class=""  (click)="oneAnswerSelect(oneSurvey,i,j)"><span class="" [ngClass]="{'answerRed':clicks[i] == j}"  ></span>{{oneAnswer.oneAnswer}}</a>
+            </mat-nav-list>
+
+            <!-- [ngClass]="{'answerRed':clicks[i][j] === 'true'}" -->
+      </mat-card>
+  <button (click)="submit(oneSurvey)" mat-raised-button [disabled] = "" >Antworten</button>
+
+    </div>
+
+
+
+
+    <ng-template #load >
+        <div class = "loadCenter">
+          <mat-spinner ></mat-spinner>
+        </div>
+    </ng-template>
+
+
+
+<!-- <div>
+  <mat-list>
+    <mat-list-item>dewdew</mat-list-item>
+  </mat-list>
+</div>
+
+
+<mat-nav-list>
+  <a mat-list-item>wcwrcrcr</a>
+</mat-nav-list> -->

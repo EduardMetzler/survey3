@@ -1,0 +1,78 @@
+<div>
+
+    <form [formGroup]="newForm"  class="flex" >
+
+
+      <div formArrayName="allVertikal" style="width: 50%">
+          <p>col</p>
+          <button mat-raised-button (click)="addNew('vertikal')">neue col</button>
+        <div *ngFor="let vertikal of newForm.get('allVertikal').controls; let i=index">
+
+
+            <div [formGroupName]="i">
+
+                <div style="width:100%;">
+                    <mat-form-field class = ""  style="width:100%;" >
+
+
+                        <input matInput  formControlName="vertikal" (keyup)="keyOnVertikal($event,i)" placeholder="Geben Sie Eine vertikal" />
+
+                        <!-- (keyup)="keyOnVertikal($event,i)" -->
+
+
+                      </mat-form-field>
+                      <!-- <button mat-raised-button (click)="deleteQuestion(i)">Die Frade Nummer : {{i+1}} löschen</button> -->
+                </div>
+            </div>
+
+        </div>
+
+
+
+      </div>
+
+
+
+
+      <div formArrayName="allHorizontal" style="width: 50%">
+        <P>row</P>
+        <button mat-raised-button (click)="addNew()">neue row</button>
+        <div *ngFor="let horizontal of newForm.get('allHorizontal').controls; let i=index">
+
+
+
+
+          <div [formGroupName]="i">
+
+            <div style="width:100%;">
+              <mat-form-field class = ""  style="width:100%;" >
+
+
+                <input matInput  formControlName="horizontal" (keyup)="keyOnHorizontal($event,i)" placeholder="Geben Sie Eine horizontal" />
+                <!-- (keyup)="keyOnHorizontal($event,i)" -->
+
+
+              </mat-form-field>
+                        <!-- <button mat-raised-button (click)="deleteQuestion(i)">Die Frade Nummer : {{i+1}} löschen</button> -->
+            </div>
+            <!-- <div *ngIf="dropTrue[i] =='true'">swwssw</div> -->
+          </div>
+
+        </div>
+
+      </div>
+      <!-- <button type="submit">fertig</button> -->
+
+
+
+
+    </form>
+    <button (click)="toDropSetting()">weiter</button>
+  </div>
+
+
+
+
+
+
+  <!-- <button >drop einrichten</button> -->

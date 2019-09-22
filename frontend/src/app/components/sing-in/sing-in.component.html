@@ -1,0 +1,77 @@
+
+
+
+
+
+<!-- <mat-form-field>
+  <mat-label>Email</mat-label>
+  <input matInput required>
+
+
+</mat-form-field>
+
+<mat-form-field>
+
+  <mat-label>Passwort</mat-label>
+  <input matInput required>
+
+</mat-form-field> -->
+
+
+
+
+<form [formGroup]="singInForm" style = "margin-top:50px;" (ngSubmit) = "ngSubmit()">
+  <mat-form-field class = "inputClass" style="width:100%;display: flex;justify-content: center;">
+    <input matInput placeholder = "Email" formControlName = "emailFormControl" >
+
+
+
+  </mat-form-field>
+
+
+  <mat-form-field class="inputClass" style="width:100%;display: flex;justify-content: center;">
+    <input matInput placeholder="Password" formControlName = "passwordFormControl" >
+
+
+
+  </mat-form-field>
+  <div style = "width:100%;display: flex;justify-content: center;">
+  <button type = "submit" mat-raised-button [disabled]="!singInForm.valid">Anmelden</button>
+
+  </div>
+
+</form>
+
+
+<!-- <button (click)="authService.deleteToken()">referf</button> -->
+
+
+
+<!-- <form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Email" [formControl]="emailFormControl">
+
+  </mat-form-field>
+</form> -->
+
+
+
+
+
+
+
+
+<!--
+
+
+<form class="example-form">
+  <mat-form-field class="example-full-width">
+    <input matInput placeholder="Email" [formControl]="emailFormControl">
+    <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="emailFormControl.hasError('required')">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+</form> -->

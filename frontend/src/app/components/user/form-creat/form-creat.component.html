@@ -1,0 +1,144 @@
+<div>
+
+  <form [formGroup]="newForm" (ngSubmit)="ngSubmit()" class="flex" >
+
+
+    <div formArrayName="allVertikal" style="width: 50%">
+        <p>col</p>
+        <button mat-raised-button (click)="addNew('vertikal')">neue col</button>
+      <div *ngFor="let vertikal of newForm.get('allVertikal').controls; let i=index">
+
+
+          <div [formGroupName]="i">
+
+              <div style="width:100%;">
+                  <mat-form-field class = ""  style="width:100%;" >
+
+
+                      <input matInput (keyup)="keyOnVertikal($event,i)" formControlName="vertikal" placeholder="Geben Sie Eine vertikal" />
+
+
+                    </mat-form-field>
+                    <!-- <button mat-raised-button (click)="deleteQuestion(i)">Die Frade Nummer : {{i+1}} löschen</button> -->
+              </div>
+          </div>
+
+      </div>
+
+
+
+    </div>
+
+
+
+
+    <div formArrayName="allHorizontal" style="width: 50%">
+      <P>row</P>
+      <button mat-raised-button (click)="addNew()">neue row</button>
+      <div *ngFor="let horizontal of newForm.get('allHorizontal').controls; let i=index">
+
+
+
+
+        <div [formGroupName]="i">
+
+          <div style="width:100%;">
+            <mat-form-field class = ""  style="width:100%;" >
+
+
+              <input matInput (keyup)="keyOnHorizontal($event,i)" formControlName="horizontal" placeholder="Geben Sie Eine horizontal" />
+
+
+            </mat-form-field>
+                      <!-- <button mat-raised-button (click)="deleteQuestion(i)">Die Frade Nummer : {{i+1}} löschen</button> -->
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <button type="submit">fertig</button>
+
+
+  </form>
+</div>
+
+<div>
+  <!-- <p >{{form.allHorizontal[0]}}</p>
+  <p >{{form.allVertikal[0]}}</p> -->
+
+</div>
+
+<!-- *ngFor="let i of form.allHorizontal " -->
+
+<!-- style="width: 200px;height:200px;" -->
+
+<!-- rowHeight="3:2" -->
+<mat-grid-list [cols]="9" gutterSize="0px" rowHeight="3:2">
+    <mat-grid-tile class="red"  colspan="2"></mat-grid-tile>
+    <div *ngFor="let allVertikal of form.allVertikal;let j = index;">
+
+
+
+        <mat-grid-tile class="red" colspan="1" ><p style="margin: 3px;">{{form.allVertikal[j]}}</p></mat-grid-tile>
+  </div>
+
+
+</mat-grid-list>
+
+<mat-grid-list [cols]="9" gutterSize="0px" rowHeight="3:2"  *ngFor="let horizontal of form.allHorizontal; let i = index;" >
+
+    <mat-grid-tile class="red"  colspan="2"><p style="margin: 3px;">{{form.allHorizontal[i]}}</p></mat-grid-tile>
+    <div *ngFor="let vertikal of form.allVertikal;let k = index;">
+
+
+
+          <mat-grid-tile class="red" colspan="1" (click)="click(i,k)">
+            <mat-radio-button value="1" [name]=""></mat-radio-button>
+
+
+
+          </mat-grid-tile>
+    </div>
+
+
+  <!-- <mat-grid-tile class="red"  colspan="2"></mat-grid-tile>
+
+  <mat-grid-tile class="red"  colspan="8" rowspan="10">
+
+  </mat-grid-tile>
+
+  <mat-grid-tile class="red"  colspan="2"></mat-grid-tile> -->
+
+
+
+
+
+
+<!--
+  <mat-grid-tile class="red" colspan="2"></mat-grid-tile>
+  <mat-grid-tile class="red" colspan="3"></mat-grid-tile>
+  <mat-grid-tile class="red" colspan="4"></mat-grid-tile> -->
+
+
+
+
+
+
+</mat-grid-list>
+
+
+
+<!-- <div style="width: 100%; height:100%; padding: 0; margin: 0;" >
+    <mat-grid-list [cols]="8" gutterSize="0px" rowHeight="3:1" style="width: 100%; height:100%; padding: 0; margin: 0;">
+
+        <mat-grid-tile class="red" colspan="1"></mat-grid-tile>
+        <mat-grid-tile class="red" colspan="1"></mat-grid-tile>
+        <mat-grid-tile class="red" colspan="1"></mat-grid-tile>
+        <mat-grid-tile class="red" colspan="1"></mat-grid-tile>
+
+        <mat-grid-tile class="red" colspan="1"></mat-grid-tile>
+        <mat-grid-tile class="red" colspan="1"></mat-grid-tile>
+        <mat-grid-tile class="red" colspan="1"></mat-grid-tile>
+        <mat-grid-tile class="red" colspan="1"></mat-grid-tile>
+    </mat-grid-list>
+</div> -->

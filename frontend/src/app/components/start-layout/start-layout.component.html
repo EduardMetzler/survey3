@@ -1,0 +1,52 @@
+
+<!-- <div [routerLink]="['',oneSurvey._id]" *ngFor='let oneSurvey of surveyService.allSurvey' >
+    {{oneSurvey.theme}}
+</div> -->
+
+<!-- <div *ngIf = 'allSurvey?.length > 0; else load'>
+  <div  *ngFor='let oneSurvey of allSurvey' (click)="selectSurvey(oneSurvey)" >
+    <mat-card>
+        <mat-card-title> {{oneSurvey}}</mat-card-title>
+    </mat-card>
+
+
+
+  </div>
+</div> -->
+
+
+
+
+<!-- <div *ngIf="allSurvey$ | async as allSurvey"> -->
+  <div *ngIf = 'allSurvey?.length > 0; else load'>
+    <div  *ngFor='let oneSurvey of allSurvey' (click)="selectSurvey(oneSurvey)" >
+      <mat-card>
+          <mat-card-title> {{oneSurvey.theme}}</mat-card-title>
+      </mat-card>
+
+
+
+    </div>
+  </div>
+<!-- </div> -->
+
+<ng-template #load >
+  <div class="loadCenter">
+    <mat-spinner ></mat-spinner>
+  </div>
+</ng-template>
+
+
+
+<!-- <div (click)="idtest()">5d3e2a780db2740598112eaa</div> -->
+<!-- (click)="idtest(i)" -->
+
+
+
+<!-- <div *ngIf="students$ | async as students"> -->
+  <!-- <div *ngFor="let s of t">
+    {{s.theme}}
+  </div> -->
+<!-- </div> -->
+
+
